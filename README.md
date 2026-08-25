@@ -1,12 +1,14 @@
+Deutsch | [English](https://github.com/street1983nk/infranode-python/blob/main/README.en.md)
+
 # infranode (Python)
 
-Keyless Python client for the [InfraNode](https://infranode.dev) open-data API,
-with ready-made [LangChain](https://www.langchain.com) and
-[LlamaIndex](https://www.llamaindex.ai) tools.
+Python-Client ohne API-Key für die [InfraNode](https://infranode.dev) Open-Data-API,
+mit fertigen Tools für [LangChain](https://www.langchain.com) und
+[LlamaIndex](https://www.llamaindex.ai).
 
-InfraNode unifies open public data for **84 German cities** (weather, air quality,
-electricity prices, land values, public transit, EV charging, demographics and
-more) behind one JSON envelope. **No API key, no signup.**
+InfraNode bündelt offene Verwaltungsdaten aus **84 deutschen Städten** (Wetter,
+Luftqualität, Strompreise, Bodenrichtwerte, ÖPNV, E-Ladepunkte, Demografie und
+mehr) hinter einem einheitlichen JSON-Envelope. **Kein API-Key, keine Registrierung.**
 
 ```bash
 pip install infranode
@@ -27,7 +29,7 @@ fuel = api.record("hamburg", "fuel-prices")
 cities = api.cities()                         # all 84 cities
 ```
 
-Async works the same way:
+Async funktioniert genauso:
 
 ```python
 import asyncio
@@ -41,10 +43,10 @@ async def main():
 asyncio.run(main())
 ```
 
-Every record carries its own `attribution` (source + license URL). The open-data
-licenses require attribution, so display it to your users.
+Jeder Record trägt seine eigene `attribution` (Quelle plus Lizenz-URL). Die
+Open-Data-Lizenzen verlangen eine Quellenangabe, zeige sie also deinen Nutzern an.
 
-Errors come back as `InfraNodeError`:
+Fehler kommen als `InfraNodeError` zurück:
 
 ```python
 from infranode import InfraNode, InfraNodeError
@@ -55,7 +57,7 @@ except InfraNodeError as e:
     print(e.code, e.message)
 ```
 
-## Use it as an AI agent tool
+## Als Tool für KI-Agenten nutzen
 
 ### LangChain
 
@@ -81,26 +83,27 @@ from infranode.integrations.llamaindex import infranode_tools
 tools = infranode_tools()   # pass to your LlamaIndex agent
 ```
 
-Both expose two tools: `infranode_get_city_data(city, dataset)` and
-`infranode_list_cities()`. The tool description lists the valid datasets, so the
-model can pick the right one. Prefer the official
-[InfraNode MCP server](https://infranode.dev) (`https://mcp.infranode.dev/mcp`)
-when your runtime speaks MCP; these tools are the lightweight alternative.
+Beide Integrationen liefern zwei Tools: `infranode_get_city_data(city, dataset)`
+und `infranode_list_cities()`. Die Tool-Beschreibung listet die gültigen Datasets
+auf, das Modell wählt also selbst das passende. Spricht deine Laufzeitumgebung
+MCP, nimm besser den offiziellen
+[InfraNode-MCP-Server](https://infranode.dev) (`https://mcp.infranode.dev/mcp`);
+diese Tools sind die leichtgewichtige Alternative.
 
 ## Datasets
 
 `weather`, `air`, `power-price`, `power-load`, `charging`, `sharing`,
 `fuel-prices`, `pollen-uv`, `water-level`, `transit`, `station-departures`,
-`demographics`, `land-values`, `election`, `tourism`, `accidents`, and more. The
-full route list is at `https://infranode.dev/api/v1/openapi.yaml`.
+`demographics`, `land-values`, `election`, `tourism`, `accidents` und mehr. Die
+vollständige Routenliste steht unter `https://infranode.dev/api/v1/openapi.yaml`.
 
-## About InfraNode
+## Über InfraNode
 
-- API: https://infranode.dev (keyless, rate limit 300 req/min/IP)
-- MCP server: `https://mcp.infranode.dev/mcp`
-- API source (Apache-2.0): https://github.com/street1983nk/infranode
+- API: https://infranode.dev (ohne API-Key, Rate-Limit 300 req/min/IP)
+- MCP-Server: `https://mcp.infranode.dev/mcp`
+- API-Quellcode (Apache-2.0): https://github.com/street1983nk/infranode
 
-## License
+## Lizenz
 
-Apache-2.0. The data remains under the licenses of the respective sources,
-surfaced via each record's `attribution` field.
+Apache-2.0. Die Daten bleiben unter den Lizenzen der jeweiligen Quellen und sind
+im `attribution`-Feld jedes Records ausgewiesen.
