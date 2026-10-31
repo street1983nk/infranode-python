@@ -52,9 +52,9 @@ Errors come back as `InfraNodeError`:
 from infranode import InfraNode, InfraNodeError
 
 try:
-    InfraNode().record("husum", "weather")  # Husum is not one of the 84 cities -> 404
+    InfraNode().record("esen", "weather")  # typo -> 404
 except InfraNodeError as e:
-    print(e.code, e.message)
+    print(e.code, e.message, e.hint)  # hint: Meintest du 'essen'?
 ```
 
 ## Use it as an AI agent tool

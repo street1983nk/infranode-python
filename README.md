@@ -52,9 +52,9 @@ Fehler kommen als `InfraNodeError` zurück:
 from infranode import InfraNode, InfraNodeError
 
 try:
-    InfraNode().record("husum", "weather")  # Husum gehört nicht zu den 84 Städten -> 404
+    InfraNode().record("esen", "weather")  # Tippfehler -> 404
 except InfraNodeError as e:
-    print(e.code, e.message)
+    print(e.code, e.message, e.hint)  # hint: Meintest du 'essen'?
 ```
 
 ## Als Tool für KI-Agenten nutzen
