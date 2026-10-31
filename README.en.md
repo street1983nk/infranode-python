@@ -52,7 +52,7 @@ Errors come back as `InfraNodeError`:
 from infranode import InfraNode, InfraNodeError
 
 try:
-    InfraNode().record("atlantis", "weather")
+    InfraNode().record("husum", "weather")  # Husum is not one of the 84 cities -> 404
 except InfraNodeError as e:
     print(e.code, e.message)
 ```

@@ -54,12 +54,12 @@ def test_slug_is_normalized():
 
 @respx.mock
 def test_error_envelope_raises():
-    respx.get(f"{DEFAULT_BASE_URL}/cities/atlantis/weather").mock(
+    respx.get(f"{DEFAULT_BASE_URL}/cities/husum/weather").mock(
         return_value=httpx.Response(200, json=ERROR)
     )
     with InfraNode() as api:
         with pytest.raises(InfraNodeError) as exc:
-            api.weather("atlantis")
+            api.weather("husum")
     assert exc.value.code == "not_found"
     assert exc.value.hint == "Pfad pruefen"
 
@@ -96,10 +96,10 @@ def test_core_get_city_data_carries_attribution():
 
 @respx.mock
 def test_core_get_city_data_handles_error():
-    respx.get(f"{DEFAULT_BASE_URL}/cities/atlantis/weather").mock(
+    respx.get(f"{DEFAULT_BASE_URL}/cities/husum/weather").mock(
         return_value=httpx.Response(200, json=ERROR)
     )
-    out = get_city_data("atlantis", "weather")
+    out = get_city_data("husum", "weather")
     assert out["error"] == "not_found"
 
 
