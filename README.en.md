@@ -26,6 +26,7 @@ print("Source:", rec.attribution["text"])   # always show attribution
 
 # Any endpoint by name
 fuel = api.record("hamburg", "fuel-prices")
+muc = api.record("München", "weather")   # any spelling: München, muenchen, munich
 cities = api.cities()                         # all 84 cities
 ```
 
