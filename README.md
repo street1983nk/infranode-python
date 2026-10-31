@@ -52,9 +52,9 @@ Fehler kommen als `InfraNodeError` zurück:
 from infranode import InfraNode, InfraNodeError
 
 try:
-    InfraNode().record("esen", "weather")  # Tippfehler -> 404
+    InfraNode().record("essen", "wetter")  # falscher Datenart-Name -> 404
 except InfraNodeError as e:
-    print(e.code, e.message, e.hint)  # hint: Meintest du 'essen'?
+    print(e.code, e.message, e.hint)  # hint: Meintest du 'weather'?
 ```
 
 ## Als Tool für KI-Agenten nutzen

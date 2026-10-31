@@ -52,9 +52,9 @@ Errors come back as `InfraNodeError`:
 from infranode import InfraNode, InfraNodeError
 
 try:
-    InfraNode().record("esen", "weather")  # typo -> 404
+    InfraNode().record("essen", "wetter")  # wrong dataset name -> 404
 except InfraNodeError as e:
-    print(e.code, e.message, e.hint)  # hint: Meintest du 'essen'?
+    print(e.code, e.message, e.hint)  # hint: Meintest du 'weather'?
 ```
 
 ## Use it as an AI agent tool
