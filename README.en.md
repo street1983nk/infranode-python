@@ -53,9 +53,9 @@ Errors come back as `InfraNodeError`:
 from infranode import InfraNode, InfraNodeError
 
 try:
-    InfraNode().record("essen", "wetter")  # wrong dataset name -> 404
+    rec = InfraNode().record("essen", "weather")
 except InfraNodeError as e:
-    print(e.code, e.message, e.hint)  # hint: Meintest du 'weather'?
+    print(e.code, e.message, e.hint)  # e.g. not_found or upstream_unavailable
 ```
 
 ## Use it as an AI agent tool

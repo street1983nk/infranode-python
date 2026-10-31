@@ -53,9 +53,9 @@ Fehler kommen als `InfraNodeError` zurück:
 from infranode import InfraNode, InfraNodeError
 
 try:
-    InfraNode().record("essen", "wetter")  # falscher Datenart-Name -> 404
+    rec = InfraNode().record("essen", "weather")
 except InfraNodeError as e:
-    print(e.code, e.message, e.hint)  # hint: Meintest du 'weather'?
+    print(e.code, e.message, e.hint)  # z. B. not_found oder upstream_unavailable
 ```
 
 ## Als Tool für KI-Agenten nutzen

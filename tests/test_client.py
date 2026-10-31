@@ -54,12 +54,12 @@ def test_slug_is_normalized():
 
 @respx.mock
 def test_error_envelope_raises():
-    respx.get(f"{DEFAULT_BASE_URL}/cities/essen/wetter").mock(
+    respx.get(f"{DEFAULT_BASE_URL}/cities/essen/weather").mock(
         return_value=httpx.Response(200, json=ERROR)
     )
     with InfraNode() as api:
         with pytest.raises(InfraNodeError) as exc:
-            api.record("essen", "wetter")
+            api.weather("essen")
     assert exc.value.code == "not_found"
     assert exc.value.hint == "Pfad pruefen"
 
